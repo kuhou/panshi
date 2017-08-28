@@ -1,0 +1,98 @@
+<extend name="./App/Common/View/default/Base/common.html" />
+<block name="style">
+<style type="text/css">
+.mod-body table tbody td{
+    text-align: left; !important;
+}
+</style>
+</block>
+<block name="main_content">
+<div class="row mod-echat-info">
+    <div class="col-md-6">
+        <div class="mod">
+            <div class="mod-head">
+                <h3>
+                    <span class="pull-left">框架信息</span>
+                </h3>
+            </div>
+            <div class="tab-content mod-content">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>操作系统</td>
+                            <td>{$Think.const.PHP_OS}</td>
+                        </tr>
+                        <tr>
+                            <td>运行环境</td>
+                            <td>{$_SERVER['SERVER_SOFTWARE']}</td>
+                        </tr>
+                        <tr>
+                            <td>MySQL 版本</td>
+                            <php>
+                                $system_info_mysql = M()->query("select version() as v;");
+                            </php>
+                            <td>{$system_info_mysql.0.v}</td>
+                        </tr>
+                        <tr>
+                            <td>ThinkPHP版本</td>
+                            <td>{$Think.VERSION}</td>
+                        </tr>
+                        <tr>
+                            <td>豆信框架版本</td>
+                            <td>{$product_info.version}</td>
+                        </tr>
+                        <tr>
+                            <td>最后更新时间</td>
+                            <td>{$product_info.upgrade_time}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mod">
+            <div class="mod-head">
+                <h3>
+                    <span class="pull-left">产品信息</span>
+                </h3>
+            </div>
+            <div class="tab-content mod-content">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>总策划</td>
+                            <td><a href="http://kuhou.org/" target="_blank">宝树</a></td>
+                        </tr>
+                        <tr>
+                            <td>研发团队</td>
+                            <td><a href="http://idoubi.cc/" target="_blank">艾逗笔</a> <a href="http://kuhou.org/" target="_blank">宝树</a></td>
+                        </tr>
+                        <tr>
+                            <td>贡献者</td>
+                            <td>梦醒、肥羊、苍竹先生、平凡、北北、斯文、李兔子、羽翼等（排名不分先后）</td>
+                        </tr>
+                        <tr>
+                            <td>官方网址</td>
+                            <td><a href="http://s.kuhou.org/" target="_blank">http://s.kuhou.org/</a></td>
+                        </tr>
+                        <tr>
+                            <td>git地址</td>
+                            <td><a href="https://github.com/kuhou/panshi" target="_blank">https://github.com/kuhou/panshi</a></td>
+                        </tr>
+                        <tr>
+                            <td>开发手册</td>
+                            <td><a href="http://doc.douchat.cc/" target="_blank">http://doc.douchat.cc/</a></td>
+                        </tr>
+                        <tr>
+                            <td>官方QQ群</td>
+                            <td><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=cce44abab355207207ccf62f4f86b95b6fd7d386b258f9454ba9dd99b072ec78"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="磐石框架交流群" title="磐石框架交流群"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</block>

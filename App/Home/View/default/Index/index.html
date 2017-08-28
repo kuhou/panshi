@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>磐石框架-我心坚如磐石！</title>
+    <meta name="keyword" content="磐石框架" />
+    <meta name="description" content="磐石框架是一款专注于微信开发的开源框架，更符合企业级用途。" />
+    <link href="/Public/Home/theme2017/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <style>
+        html,
+        body,
+        ul,
+        h1 {
+          margin: 0;
+        }
+        body {
+          width: 100%;
+          height: 100%;
+          font: 14px/1.5 "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei", sans-serif;
+        }
+        a {
+          text-decoration: none;
+        }
+        li {
+          list-style: none;
+        }
+        .router-link-active {
+          color: #0db252;
+        }
+        .m-tip {
+          padding: 20px 0;
+        }
+        html,
+body,
+ul,
+h1 {
+  margin: 0;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font: 14px/1.5 "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+.router-link-active {
+  color: #0db252;
+}
+.m-tip {
+  padding: 20px 0;
+}
+main {
+  margin-top: 66px;
+  min-height: 600px;
+}
+.g-topbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+.m-header {
+  width: 100%;
+  height: 66px;
+  background-color: #2c3e50;
+}
+.m-header .wrapper {
+  width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+.m-header .wrapper .logo {
+  width: 140px;
+  height: 66px;
+  line-height: 66px;
+  margin-top: -5px;
+}
+.m-header .wrapper .logo img {
+  width: 140px;
+  height: 40px;
+  vertical-align: middle;
+}
+.m-nav {
+  width: auto;
+  height: 66px;
+  line-height: 66px;
+  flex: 1;
+}
+.m-nav ul {
+  margin-left: 20px;
+}
+.m-nav ul li {
+  float: left;
+}
+.m-nav ul li a {
+  color: #fff;
+  font-size: 18px;
+  padding: 0 20px;
+  text-decoration: none;
+}
+.m-topuser {
+  height: 66px;
+  line-height: 66px;
+}
+.m-topuser a img {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+.m-topuser .login {
+  background-color: #1ba358;
+  border: none;
+  color: #fff;
+  width: 80px;
+  height: 32px;
+  line-height: 32px;
+}
+.m-topuser .user {
+  border: none;
+  color: #fff;
+  width: 80px;
+  height: 32px;
+  text-decoration: none;
+}
+.m-topuser .user img {
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+.m-footer {
+  clear: both;
+  height: 280px;
+  background-color: #2c3e50;
+}
+.m-footer .wrapper {
+  position: relative;
+  width: 1080px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+}
+.m-footer .wrapper .left {
+  width: 300px;
+}
+.m-footer .wrapper .right {
+  flex: 1;
+  display: flex;
+  margin-left: 392px;
+}
+.m-footer .intro {
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+}
+.m-footer .m-qrcode {
+  float: right;
+}
+.m-footer .m-qrcode p {
+  color: #fff;
+}
+.m-footer .copyright {
+  position: absolute;
+  width: 100%;
+  color: #fff;
+  bottom: -20px;
+  text-align: center;
+  font-size: 16px;
+}
+.m-footer .qrcode {
+  margin-left: 20px;
+  text-align: center;
+}
+.m-footer .qrcode img {
+  width: 150px;
+  height: 150px;
+}
+.m-footer .qrcode p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+html,
+body,
+ul,
+h1 {
+  margin: 0;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font: 14px/1.5 "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+.router-link-active {
+  color: #0db252;
+}
+.m-tip {
+  padding: 20px 0;
+}
+.m-banner {
+  height: 500px;
+  background-color: #2c3e50;
+  text-align: center;
+}
+.m-banner .wrapper {
+  width: 1080px;
+  margin: 0px auto;
+}
+.m-banner .title {
+  font-size: 72px;
+  font-weight: 700;
+  color: #fff;
+  padding: 100px 0 10px;
+}
+.m-banner .slogan {
+  font-size: 36px;
+  color: #fff;
+  padding: 10px 0 20px;
+}
+.m-banner .button-wrapper {
+  padding: 20px 0;
+}
+.m-banner .button-wrapper button {
+  width: 150px;
+  padding: 12px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #3cb180;
+  border: 1px solid #303643;
+  color: #fff;
+}
+.m-banner .button-wrapper button i {
+  padding-right: 5px;
+}
+.m-banner .button-wrapper .download {
+  margin-right: 40px;
+  background-color: #08a5e0;
+}
+.m-feature {
+  margin-top: 40px;
+}
+.m-feature .wrapper {
+  width: 1080px;
+  margin: 0 auto;
+}
+.m-feature .wrapper .item .title {
+  font-size: 24px;
+  margin: 10px;
+  text-align: center;
+  color: #40485b;
+}
+.m-feature .wrapper .item .desc {
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #333;
+  margin: 20px;
+}
+.m-feature .content-wrapper {
+  display: flex;
+}
+.m-feature .right {
+  flex: 1;
+  margin: 40px;
+}
+.m-usersay {
+  margin: 40px auto;
+}
+.m-usersay .wrapper {
+  width: 1080px;
+  margin: 0 auto;
+}
+.m-usersay .title {
+  font-size: 24px;
+  color: #40485b;
+  margin: 30px auto 40px;
+  padding: 10px 0;
+  text-align: center;
+  border-top: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
+}
+.m-usersay .content-wrapper {
+  display: flex;
+}
+.m-usersay .content-wrapper .item {
+  width: 33.3%;
+  display: flex;
+}
+.m-usersay .content-wrapper .item img {
+  width: 100px;
+  max-height: 100px;
+  border-radius: 50px;
+  margin: 10px 20px 10px 10px;
+}
+.m-usersay .content-wrapper .item .right .name {
+  font-size: 18px;
+  color: #333;
+  margin: 10px;
+}
+.m-usersay .content-wrapper .item .right .message {
+  font-size: 14px;
+  line-height: 24px;
+  margin: 10px;
+}
+    </style>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+
+<meta name="__hash__" content="6666cd76f96956469e7be39d750cc7d9_b7c0777b6b10792e5d2289b74b240f4b" /></head>
+
+<body>
+<div id="app">
+    <div class="g-topbar">
+        <header class="m-header">
+            <div class="wrapper">
+                <h1 class="logo"><a href="/">
+                <img src="__PUBLIC__/Home/default/img/logo-white.png?12f7eca0d2b8e047fbc7a232eca1c461" alt="douchat" class="src">
+                </a></h1>
+                <nav class="m-nav">
+                    <ul>
+                        <li><a href="./" class="router-link-active">首页</a></li>
+                        <li><a href="http://kuhou.net" class="">插件商城<span style="background:url(__PUBLIC__/Home/default/img/new.gif) no-repeat;padding:0px 11px;position:relative;top:-5px;left:2px;"></span></a></li>
+                        <li><a href="http://doc.douchat.cc" target="_blank">开发文档</a></li>
+                        <!-- <li><a href="http://bbs.douchat.cc" target="_blank">社区</a></li> -->
+                    </ul>
+                </nav>
+                <div class="m-topuser">
+
+                   <a href="{:U('Mp/Index/index')}" class="login">
+                            <button class="login">后台管理</button>
+                        </a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <main>
+        
+    <div class="p-index">
+        <div class="m-banner">
+            <div class="wrapper">
+                <div class="title">磐石框架</div>
+                <div class="slogan">更符合企业级设计标准</div>
+                <div class="button-wrapper">
+                    <button class="download"><i class="fa fa-download"></i>下载磐石1</button>
+                    <button class="github"><i class="fa fa-github"></i>Github</button>
+                </div>
+            </div>
+        </div>
+        <div class="m-feature">
+            <div class="wrapper">
+                <div class="content-wrapper">
+                    <div class="item">
+                        <div class="title">高度封装</div>
+                        <div class="desc">豆信对微信接口、php常用类库、流行前端框架、样式库等都进行了一定程度的封装，让开发者可以快速的实现想要的功能。</div>
+                    </div>
+                    <div class="item">
+                        <div class="title">灵活扩展</div>
+                        <div class="desc">豆信自主研发了一套插件机制，充分发挥AOP切面的思想，基于插件来扩展功能，降低系统的耦合性，使一切变得非常灵活。</div>
+                    </div>
+                    <div class="item">
+                        <div class="title">便捷开发</div>
+                        <div class="desc">豆信封装了一套通用的视图构建工具，可以让开发者专注于业务逻辑的实现，在实现插件后台管理时甚至不需要写任何一行HTML代码。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-usersay">
+            <div class="wrapper">
+                <div class="title">开发者说</div>
+                <div class="content-wrapper">
+                    <div class="item"><img src="http://www.weiphp.cn/Public/Home/images/about/user_1.jpg" alt="">
+                        <div class="right">
+                            <div class="name">宝树</div>
+                            <div class="message">
+                                豆信的插件分发机制、视图模型工具都很好用。核心代码写的非常简洁、优雅，是个不错的框架。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item"><img src="http://www.weiphp.cn/Public/Home/images/about/user_2.jpg" alt="">
+                        <div class="right">
+                            <div class="name">斯文</div>
+                            <div class="message">
+                                喜欢豆信插件式的开发，让很多功能可以简单轻松完成，而且别人开发的插件也可以快速接入到自己的平台中。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item"><img src="http://www.weiphp.cn/Public/Home/images/about/user_3.jpg" alt="">
+                        <div class="right">
+                            <div class="name">肥羊</div>
+                            <div class="message">
+                                豆信非常简洁，不管在界面和代码上，后台分块也很明了，不像其他的平台都太繁杂了，希望越做越好。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+    <footer class="m-footer">
+        <div class="wrapper">
+            <div class="left">
+                <div class="logo"><img src="__PUBLIC__/Home/default/img/logo-white.png?12f7eca0d2b8e047fbc7a232eca1c461" alt="douchat" class="src"></div>
+                <div class="intro">
+                    豆信是一个专注于微信公众号开发的开源框架，具有简洁、高效、开源等特点。
+                    <br>
+                    <br>
+                    <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=41a33c33d92f00d63db24ae1490df68ade624d22488dfa8a832089fb8bbce576"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="豆信开源框架交流群" title="豆信开源框架交流群"></a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="qrcode"><img src="http://open.weixin.qq.com/qr/code/?username=kuhoupai" alt="">
+                    <p>酷猴公众号</p>
+                </div>
+                <!-- <div class="qrcode"><img src="http://open.weixin.qq.com/qr/code/?username=idouly_com" alt="">
+                    <p>艾豆工作室微信公众号</p>
+                </div> -->
+                <!-- <div class="qrcode"><img src="http://open.weixin.qq.com/qr/code/?username=douchat_cc" alt="">
+                    <p>豆信开源框架微信公众号</p>
+                </div> -->
+            </div>
+            <div class="copyright">
+                Copyright © 2017 &nbsp;&nbsp;<em>磐石</em>&nbsp;&nbsp;版权所有 鄂ICP备15023865号-1
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+        $(function() {
+            $('.download').on('click', function () {
+                window.open('https://github.com/mikemintang/douchat/releases')
+            })
+            $('.github').on('click', function () {
+                window.open('https://github.com/mikemintang/douchat.git')
+            })
+        })
+    </script>
+
+</body>
+
+</html>
