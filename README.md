@@ -16,5 +16,5 @@
 ##产品体验
 
 ####官网：<a href="http://s.kuhou.org/" target="_blank">http://s.kuhou.org/</a>
-####开发手册：<a href="http://doc.douchat.cc/" target="_blank">http://doc.douchat.cc/</a>
+####开发手册：<a href="http://doc.kuhou.org/" target="_blank">http://doc.kuhou.org/</a>
 ####产品交流QQ群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=cce44abab355207207ccf62f4f86b95b6fd7d386b258f9454ba9dd99b072ec78"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="磐石框架交流群" title="磐石框架交流群"></a>
