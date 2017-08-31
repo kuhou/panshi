@@ -56,7 +56,7 @@ class AppController extends BaseController {
 
         $this->assign('info', $info);
         $this
-            ->addCrumb('小程序管理', U('Mp/App/index'), '')
+            // ->addCrumb('小程序管理', U('Mp/App/index'), '')
             ->addCrumb('首页', '', 'active')
             ->addNav('接口配置', '', 'active')
 //            ->addNav('清除缓存', U('clear_cache'), '')

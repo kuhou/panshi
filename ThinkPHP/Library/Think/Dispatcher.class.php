@@ -180,6 +180,9 @@ class Dispatcher {
 
         if(!defined('__APP__')){
 	        $urlMode        =   C('URL_MODEL');
+            
+            define('__APPS__',_PHP_FILE_.'/');
+
 	        if($urlMode == URL_COMPAT ){// 兼容模式判断
 	            define('PHP_FILE',_PHP_FILE_.'?'.$varPath.'=');
 	        }elseif($urlMode == URL_REWRITE ) {
@@ -190,6 +193,8 @@ class Dispatcher {
 	        }else {
 	            define('PHP_FILE',_PHP_FILE_);
 	        }
+
+
 	        // 当前应用地址
 	        define('__APP__',strip_tags(PHP_FILE));
 	    }

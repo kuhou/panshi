@@ -22,11 +22,11 @@ class BaseController extends CommonController {
 				'url' => U('Mp/Index/index'),
 				'class' => ''
 			);
-			$topmenu[] = array(
-				'title' => '小程序管理',
-				'url' => U('Mp/App/index'),
-				'class' => ''
-			);
+			// $topmenu[] = array(
+			// 	'title' => '小程序管理',
+			// 	'url' => U('Mp/App/index'),
+			// 	'class' => ''
+			// );
 			$topmenu[] = array(
 				'title' => '插件管理',
 				'url' => U('Mp/Addons/manage'),

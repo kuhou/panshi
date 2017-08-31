@@ -343,7 +343,3 @@ class AddonsController extends BaseController {
 		return $children;
 	}
 }
-
-
-
- ?>

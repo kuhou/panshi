@@ -33,11 +33,11 @@ class BaseController extends CommonController {
 				'url' => U('Mp/Index/index'),
 				'class' => get_addon() || $_G['controller_name'] == 'index' ? 'active' : ''
 			);
-			$topmenu[] = array(
-				'title' => '小程序管理',
-				'url' => U('Mp/App/index'),
-				'class' => get_addon() || $_G['controller_name'] == 'app' ? 'active' : ''
-			);
+			// $topmenu[] = array(
+			// 	'title' => '小程序管理',
+			// 	'url' => U('Mp/App/index'),
+			// 	'class' => get_addon() || $_G['controller_name'] == 'app' ? 'active' : ''
+			// );
 			$topmenu[] = array(
 				'title' => '插件管理',
 				'url' => U('Mp/Addons/manage'),

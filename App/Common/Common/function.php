@@ -67,12 +67,16 @@ function create_addon_url($url, $param = array())
 /**
  * 生成移动端访问链接
  */
-function create_mobile_url($url, $param = array())
+function create_mobile_url($url, $mode=null,$param = array())
 {
     if (!$param['mpid']) {
         $param['mpid'] = get_mpid();
     }
-    return U('/addon/' . get_addon() . '/mobile/' . $url . '@' . C('HTTP_HOST'), $param);
+    if($mode){
+        return U('/addon/' . get_addon() . '/mobile/' . $url . '@' . C('HTTP_HOST'), $param,true,false,1);
+    }else{
+        return U('/addon/' . get_addon() . '/mobile/' . $url . '@' . C('HTTP_HOST'), $param);
+    }
 }
 
 /**
@@ -216,7 +220,6 @@ function init_fans()
 /**
  * 获取jssdk参数
  */
-/*
 function get_jssdk_sign_package()
 {
     $mp_info = get_mp_info();
@@ -224,7 +227,6 @@ function get_jssdk_sign_package()
     $sign_package = $jssdk->getSignPackage();        // 获取jssdk配置包
     return $sign_package;
 }
-*/
 
 /**
  * 获取微信支付参数
@@ -274,6 +276,16 @@ function get_jsapi_parameters($data)
     return $jsApiParameters;
 }
 */
+
+
+/*
+ * 通用下单
+ */
+function order($data)
+{
+    $ps_order = D('ps_order_list');
+    return $ps_order->add($data);
+}
 
 /*
  * 查询支付详情

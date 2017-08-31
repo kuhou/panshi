@@ -8,6 +8,7 @@ use Think\Controller;
  */
 class MobileBaseController extends Controller {
 
+    public $ress = null;
     /**
      * 初始化
      * @author 艾逗笔<765532665@qq.com>
@@ -23,22 +24,26 @@ class MobileBaseController extends Controller {
             }
         }
         
-        // 新支付回调
+        // 新支付回调 防作弊
         if($GLOBALS["HTTP_RAW_POST_DATA"]){
             $xml = $GLOBALS["HTTP_RAW_POST_DATA"];
             $arr = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
 
             $transaction_id = $arr['transaction_id'];
             $payment_res = wechat_query_order($transaction_id,$arr['attach']);
+
+//            $this->ress = $payment_res;
             
-            $pay_result = D('pay_result');
-            $datass = array(
-            'id' => time(),
-            'cont' => serialize($payment_res)
-            );
-            $pay_result->add($datass);
+//            $pay_result = D('pay_result');
+//            $datass = array(
+//            'id' => time(),
+//            'cont' => serialize($payment_res)
+//            );
+//            $pay_result->add($datass);
 
             if($payment_res['out_trade_no']){
+
+//                $this->out_trade_no = $payment_res['out_trade_no'];
                 $mp_payment = M('mp_payment');
 
                 if (!$mp_payment->where(array('orderid' => $payment_res['out_trade_no']))->find()) {
@@ -59,40 +64,20 @@ class MobileBaseController extends Controller {
                           <return_code><![CDATA[' . $return_code . ']]></return_code>
                           <return_msg><![CDATA[' . $return_msg . ']]></return_msg>
                         </xml>';
-                    exit($xml);
+                    return $xml;
+//                    exit($xml);
                 }
             }
 
-
         }
-
-        // mobile回调时候支付记录保存到数据库
-//        if (I('out_trade_no')) {
-//            $payment = I('post.');
-//            if (!M('mp_payment')->where(array('orderid'=>$payment['out_trade_no']))->find()) {
-//                $data['mpid'] = $payment['mpid'];
-//                $data['openid'] = $payment['openid'];
-//                $data['orderid'] = $payment['out_trade_no'];
-//                $data['create_time'] = strtotime($payment['time_end']);
-//                $data['detail'] = json_encode($payment);
-//                M('mp_payment')->add($data);
-//                $return_code = I('return_code');
-//                $return_msg = I('return_msg');
-//                return '<xml>
-//                          <return_code><![CDATA['.$return_code.']]></return_code>
-//                          <return_msg><![CDATA['.$return_msg.']]></return_msg>
-//                        </xml>';
-//            }
-//        }
-
 
         if (get_mpid() && !get_openid()) {
             init_fans();
         }
 
-//        if (!get_ext_openid()) {
-//            init_ext_fans();       // 初始化鉴权用户
-//        }
+        if (!get_ext_openid()) {
+            init_ext_fans();       // 初始化鉴权用户
+        }
 
         global $_G;
         $_G['site_path'] = SITE_PATH . '/';
@@ -127,37 +112,24 @@ class MobileBaseController extends Controller {
      * @author 艾逗笔<765532665@qq.com>
      */
     public function json_pay() {
-        $jsApiParameters = get_jsapi_parameters(I('post.'));
-        $this->ajaxReturn($jsApiParameters);
-    }
-
-    /**
-     * 粉丝绑定
-     * @author 艾逗笔<765532665@qq.com>
-     */
-    // 删除粉丝绑定 粉丝绑定存在漏洞
-    public function fans_bind() {
-//        C('TOKEN_ON', false);
-//        if (IS_POST) {
-//            $data = I('post.');
-//            $data['is_bind'] = 1;
-//            $res = M('mp_fans')->where(array('openid'=>get_openid()))->save($data);
-//            if ($res === false) {
-//                $return['errcode'] = 0;
-//                $return['errmsg'] = '保存用户信息失败';
-//                $return['data'] = I('post.');
-//            } else {
-//                $return['errcode'] = 1;
-//                $return['errmsg'] = '保存用户信息成功';
-//                $return['data'] = I('post.');
-//                $return['url'] = U('fans_bind');
-//            }
-//            $this->ajaxReturn($return);
-//        } else {
-//            $fans_info = get_fans_info();
-//            $this->assign('fans_info', $fans_info);
-//            parent::display('Fans/bind');
-//        }
+        // @通过orderid 算价格
+        $orderid = I('orderid');
+        $ps_order_list = D('ps_order_list');
+        $ps_order = $ps_order_list->where(array('orderid'=>$orderid))->find();
+        if($ps_order){
+            $params = array(
+                'name' => $ps_order['order_name'],
+                'total_fee' => intval($ps_order['amount']*100),
+                'notify_url' => I('notify'),
+                'order_id' => I('orderid'),
+                'openid' => $ps_order['openid'],
+                'mpid' => $ps_order['mpid']
+            );
+            $config = wechat_pay($params);
+            $this->ajaxReturn($config);
+        }else{
+            exit('参数错误');
+        }
     }
 
     /**
@@ -199,5 +171,3 @@ class MobileBaseController extends Controller {
         parent::display($templateFile,$charset,$contentType,$content,$prefix);
     }
 }
-
-?>

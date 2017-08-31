@@ -41,9 +41,10 @@ function hideOptionMenu() {
  * 微信支付
  * @author 艾逗笔<765532665@qq.com>
  */
-function pay(price, orderid, notify, extra, callback) {
+function pay(name,price, orderid, notify, extra, callback) {
   var url = JSON_PAY;      // 获取支付参数地址
   var data = {                        // 请求参数
+      name:name,
       price : price,
       orderid : orderid,
       notify : notify
@@ -66,9 +67,17 @@ function pay(price, orderid, notify, extra, callback) {
               success: function (res) {
                   callback(extra);
               },
+
+
               error : function() {
                   alert('支付失败');
+              },
+
+              cancel:function(res){
+                  //支付取消
+                  // alert('支付取消')
               }
+
           });
       },
       error : function() {

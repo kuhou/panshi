@@ -878,7 +878,7 @@ function layout($layout) {
  * @param boolean $domain 是否显示域名
  * @return string
  */
-function U($url='',$vars='',$suffix=true,$domain=false) {
+function U($url='',$vars='',$suffix=true,$domain=false,$mode=null) {
     // 解析URL
     $info   =  parse_url($url);
     $url    =  !empty($info['path'])?$info['path']:ACTION_NAME;
@@ -997,7 +997,12 @@ function U($url='',$vars='',$suffix=true,$domain=false) {
         }
     }else{ // PATHINFO模式或者兼容URL模式
         if(isset($route)) {
-            $url    =   __APP__.'/'.rtrim($url,$depr);
+            
+            if($mode){
+                $url    =   __APPS__.rtrim($url,$depr);
+            }else{
+                $url    =   __APP__.'/'.rtrim($url,$depr);
+            }
         }else{
             $module =   (defined('BIND_MODULE') && BIND_MODULE==$module )? '' : $module;
             $url    =   __APP__.'/'.($module?$module.MODULE_PATHINFO_DEPR:'').implode($depr,array_reverse($var));
@@ -1008,7 +1013,7 @@ function U($url='',$vars='',$suffix=true,$domain=false) {
         if(!empty($vars)) { // 添加参数
             foreach ($vars as $var => $val){
                 if('' !== trim($val))   $url .= $depr . $var . $depr . urlencode($val);
-            }                
+            }
         }
         if($suffix) {
             $suffix   =  $suffix===true?C('URL_HTML_SUFFIX'):$suffix;
